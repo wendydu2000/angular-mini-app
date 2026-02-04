@@ -21,6 +21,9 @@ export class FlowerListComponent implements OnInit, OnDestroy {
 
   constructor(private cdr: ChangeDetectorRef, private flickrService: FlickrService) { }
 
+  /**
+   *fetch initial flower photos on component initialization
+   */
   ngOnInit(): void {
     this.fetchFlowers();
   }
@@ -29,6 +32,9 @@ export class FlowerListComponent implements OnInit, OnDestroy {
     // TODO: Cleanup
   }
 
+  /**
+   * Fetch flower photos from Flickr API
+   */
   private fetchFlowers(): void {
     this.isLoading = true;
     this.error = null;
@@ -45,7 +51,6 @@ export class FlowerListComponent implements OnInit, OnDestroy {
         this.cdr.markForCheck();
       })
     ).subscribe(response => {
-      console.log('Flickr API Response:', response);
       const mappedPhotos = response.photos.photo.map((photo: flowerPhoto) => ({
         ...photo,
         url: this.getPhotoUrl(photo)
@@ -55,10 +60,19 @@ export class FlowerListComponent implements OnInit, OnDestroy {
     });
   }
 
+  /**
+   * get photo URL from photo data
+   * @param photo 
+   * @returns 
+   */
   private getPhotoUrl(photo: flowerPhoto): string {
     return `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`;
   }
 
+  /**
+   * fetch flowers by selected color
+   * @param colorCode 
+   */
   public fetchFlowersByColor(colorCode?: number): void {
     this.currentColor = colorCode;
     this.page = 1;
@@ -66,6 +80,9 @@ export class FlowerListComponent implements OnInit, OnDestroy {
     this.fetchFlowers();
   }
 
+  /**
+   * load more flower photos
+   */
   public loadMoreFlowers(): void {
     this.page++;
     this.isLoading = true;

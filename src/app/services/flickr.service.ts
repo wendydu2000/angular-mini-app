@@ -12,6 +12,12 @@ export class FlickrService {
   constructor(private http: HttpClient) {
   }
 
+  /**
+   * get flower photos from Flickr API
+   * @param page 
+   * @param colorCode 
+   * @returns 
+   */
   public getFlowers(page: number, colorCode?: number): Observable<any> {
     let params = new HttpParams()
       .set('method', 'flickr.photos.search')
