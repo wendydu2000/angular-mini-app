@@ -1,0 +1,65 @@
+.app-flower-list-container {
+  padding: 48px;
+
+  .app-flower-list-nav {
+    width: 100%;
+    display: flex;
+    gap: 16px;
+    padding: 16px;
+    background-color: linen;
+
+    .app-flower-list-nav-red button{
+      background-color: red;
+      color: white;
+    }
+
+    .app-flower-list-nav-green button{
+      background-color: green;
+      color: white;
+    }
+
+    .app-flower-list-nav-blue button{
+      background-color: blue;
+      color: white;
+    }
+  }
+
+  .app-flower-list-loading {
+    padding: 6px;
+    background-color: darkorange;
+  }
+
+  .app-flower-list-error {
+    padding: 6px;
+    color: red;
+  }
+
+  .app-flower-list-total {
+    padding: 6px;
+    background-color: lightseagreen;
+    color: white;
+  }
+
+  .app-flower-list-photos-container {
+    .app-flower-list-photos {
+      display:flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      margin-top: 16px;
+    
+      img {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+    }
+
+    .app-flower-list-footer {
+      display: flex;
+      margin-top: 24px;
+      justify-content: center;
+    }
+  }
+}
